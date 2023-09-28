@@ -1,8 +1,9 @@
 **# My-Capstone-API-Project.**
 
-How to run this project
+**How to run this project**
 
-npm install
+<a heaf="">npm install<a/>
+
 install all dependencies required
 
 npm start
