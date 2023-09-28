@@ -1,0 +1,128 @@
+
+<%- include("partials/header.ejs") %>
+
+<body>
+    <div class="fontpage">
+        <div class="Home">
+            <h1>ROVER SEARCH</h1>
+        </div>
+        <form class="botton-add" action="/submit" method="POST">
+            <input id="SearchRover" class="P-holder" type="text" name="Search-Rover-Name" placeholder="Search by Rover Name">
+        </form>
+    </div>
+
+   <% if (locals.data)  { %>
+      <%- include(`partials/${locals.data}.ejs`) %>
+   <% } %>
+      
+   <% if (locals.data || locals.APIphotos) { %>
+    <div class="box">
+      <div class="photo-box1">
+        <div>
+          <% if (locals.APIphotos) { %>
+            <h2 class="h2ROVER-name"><%= APIphotos[0].rover.name %></h2>
+          <% } else { %>
+            <h2 class="h2ROVER-name">SEARCH ROVER PHOTOS</h2>
+          <% } %>
+        </div>
+      </div>
+      
+      <% if (locals.APIphotos) { %>
+      <div class="box1">
+        <section class="carousel" aria-label="Gallery">
+            <ol class="carousel__viewport">
+              <li id="carousel__slide1"
+                  tabindex="0"
+                  class="carousel__slide">
+                <img class="IMG-C" src=<%= APIphotos[0].img_src %> alt="ROVER ON MARS" width="500" height="600">
+                <div class="carousel__snapper">
+                  <a href="#carousel__slide4"
+                     class="carousel__prev">Go to last slide</a>
+                  <a href="#carousel__slide2"
+                     class="carousel__next">Go to next slide</a>
+                </div>
+              </li>
+              <li id="carousel__slide2"
+                  tabindex="0"
+                  class="carousel__slide">
+                  <img class="IMG-C" src=<%= APIphotos[10].img_src %> alt="ROVER ON MARS" width="500" height="600">
+                <div class="carousel__snapper"></div>
+                <a href="#carousel__slide1"
+                   class="carousel__prev">Go to previous slide</a>
+                <a href="#carousel__slide3"
+                   class="carousel__next">Go to next slide</a>
+              </li>
+              <li id="carousel__slide3"
+                  tabindex="0"
+                  class="carousel__slide">
+                  <img class="IMG-C" src=<%= APIphotos[20].img_src %> alt="ROVER ON MARS" width="500" height="600">
+                <div class="carousel__snapper"></div>
+                <a href="#carousel__slide2"
+                   class="carousel__prev">Go to previous slide</a>
+                <a href="#carousel__slide4"
+                   class="carousel__next">Go to next slide</a>
+              </li>
+              <li id="carousel__slide4"
+                  tabindex="0"
+                  class="carousel__slide">
+                  <img class="IMG-C" src=<%= APIphotos[30].img_src %> alt="ROVER ON MARS" width="500" height="600">
+                <div class="carousel__snapper"></div>
+                <a href="#carousel__slide3"
+                   class="carousel__prev">Go to previous slide</a>
+                <a href="#carousel__slide1"
+                   class="carousel__next">Go to first slide</a>
+              </li>
+            </ol>
+
+            <aside class="carousel__navigation">
+              <ol class="carousel__navigation-list">
+                <li class="carousel__navigation-item">
+                  <a href="#carousel__slide1"
+                     class="carousel__navigation-button">Go to slide 1</a>
+                </li>
+                <li class="carousel__navigation-item">
+                  <a href="#carousel__slide2"
+                     class="carousel__navigation-button">Go to slide 2</a>
+                </li>
+                <li class="carousel__navigation-item">
+                  <a href="#carousel__slide3"
+                     class="carousel__navigation-button">Go to slide 3</a>
+                </li>
+                <li class="carousel__navigation-item">
+                  <a href="#carousel__slide4"
+                     class="carousel__navigation-button">Go to slide 4</a>
+                </li>
+              </ol>
+            </aside>
+          </section>
+        <div class="photo-main2"></div>
+      </div>
+      <% } %>
+      <% if (locals.data) { %>
+      <div class="ROVER-Info-select">
+        <form action="/submit2" id="form" class="form" method="POST">
+          <select name="NasaRovername" class="form-select">
+            <option value="" data-display="Select">Select Rover</option>
+            <option value="perseverance">Perseverance</option>
+            <option value="curiosity">Curiosity</option>
+            <option value="opportunity">Opportunity</option>
+            <option value="spirit">Spirit</option>
+          </select>
+          <select name="Camera" class="form-select">
+            <option value="">Select Camera</option>
+            <option value="FHAZ">FHAZ</option>
+            <option value="NAVCAM">NAVCAM</option>
+            <option value="MAST">MAST</option>
+            <option value="CHEMCAM">CHEMCAM</option>
+            <option value="MAHLI">MAHLI</option>
+            <option value="MARDI">MARDI</option>
+          </select>
+          <input type="date" id="DDay" class="form-select" name="RoverDay">
+          <button type="submit" class="form-submit">Go</button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+    <% } %>
+</body>
+</html>
