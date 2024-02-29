@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 
 const app = express();
 const port = 3000;
-const APIKEY = "HqgdyWzJW2o9mJCyNNGef8m1D1lSeWicTEMovhM5"
+const APIKEY = ""
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
